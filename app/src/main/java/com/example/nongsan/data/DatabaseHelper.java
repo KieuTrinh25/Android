@@ -9,91 +9,75 @@ import android.util.Log;
 
 import com.example.nongsan.utils.Constants;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private Context context;
-    private SQLiteDatabase db;
+    protected Context context;
+    protected SQLiteDatabase db;
 
     public DatabaseHelper(Context context){
         super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
         this.context = context;
+        createDatabase();
+        openDatabase();
     }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        try {
-            createDataBase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
     @Override
     public synchronized void close() {
-        if(db != null){
+        if (db != null)
             db.close();
-        }
         super.close();
     }
-    public void createDataBase() throws IOException {
-        boolean dbExist = checkDataBase();
 
-        if (dbExist) {
-
-        } else {
+    public void createDatabase() {
+        boolean mDatabaseExist = checkDatabase();
+        if (!mDatabaseExist) {
             this.getReadableDatabase();
+            this.close();
             try {
-                copyDataBase();
-            } catch (IOException e) {
-                Log.e("db create", e.getMessage());
+                copyDatabase();
+            } catch (IOException mIOException) {
+                throw new Error("Error!!!");
             }
         }
     }
 
-    private boolean checkDataBase() {
-        SQLiteDatabase tempDB = null;
-        try {
-            String myPath = Constants.DATABASE_PATH + Constants.DATABASE_NAME;
-            tempDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
-        } catch (SQLiteException e) {
-            Log.e("tle99 - check", e.getMessage());
+    public boolean checkDatabase() {
+        File dbFile = new File(Constants.DATABASE_PATH + Constants.DATABASE_NAME);
+        return dbFile.exists();
+    }
+
+    public void copyDatabase() throws IOException {
+        InputStream mInput = context.getAssets().open(Constants.DATABASE_NAME);
+        String outFileName = Constants.DATABASE_PATH + Constants.DATABASE_NAME;
+        OutputStream mOutput = new FileOutputStream(outFileName);
+        byte[] mBuffer = new byte[1024];
+        int mLength;
+        while ((mLength = mInput.read(mBuffer)) > 0) {
+            mOutput.write(mBuffer, 0, mLength);
         }
-        if (tempDB != null)
-            tempDB.close();
-        return tempDB != null ? true : false;
+        mOutput.flush();
+        mOutput.close();
+        mInput.close();
     }
 
-    public void copyDataBase() throws IOException {
-        try {
-            InputStream myInput = context.getAssets().open(Constants.DATABASE_NAME);
-            String outputFileName = Constants.DATABASE_PATH + Constants.DATABASE_NAME;
-            OutputStream myOutput = new FileOutputStream(outputFileName);
-
-            byte[] buffer = new byte[1024];
-            int length;
-
-            while((length = myInput.read(buffer))>0){
-                myOutput.write(buffer, 0, length);
-            }
-
-            myOutput.flush();
-            myOutput.close();
-            myInput.close();
-        } catch (Exception e) {
-            Log.e("tle99 - copyDatabase", e.getMessage());
-        }
-
+    public boolean openDatabase() {
+        String mPath = Constants.DATABASE_PATH + Constants.DATABASE_NAME;
+        db = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
+        return db != null;
     }
-    public void openDataBase() throws SQLException {
-        String myPath = Constants.DATABASE_PATH + Constants.DATABASE_NAME;
-        db = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
-    }
-
 }

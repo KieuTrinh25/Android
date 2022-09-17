@@ -1,6 +1,7 @@
 package com.example.nongsan.ui.constract;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.nongsan.data.DatabaseDao;
 import com.example.nongsan.data.DatabaseSQlite;
@@ -22,6 +23,7 @@ public class HomePresenter implements  HomeConstract.IPresenter{
     @Override
     public void getCategoryList() {
         List<Category> categoryList = DatabaseDao.getInstance().getCategoryDao().all();
+
         mView.setCategoryListToView(categoryList);
     }
 

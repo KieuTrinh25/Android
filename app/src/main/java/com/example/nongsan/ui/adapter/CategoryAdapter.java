@@ -1,5 +1,7 @@
 package com.example.nongsan.ui.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nongsan.R;
 import com.example.nongsan.data.model.Category;
+import com.example.nongsan.utils.Constants;
 
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
-private List<Category> categoryList;
+    private List<Category> categoryList;
 
 public CategoryAdapter(List<Category> categoryList){
-        this.categoryList = categoryList;
-        }
+
+    this.categoryList = categoryList;
+}
 
 @NonNull
 @Override
@@ -32,9 +36,9 @@ public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 @Override
 public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Category category = categoryList.get(position);
-        holder.tvName.setText(category.name);
-        }
+    Category category = categoryList.get(position);
+    holder.tvName.setText(category.name);
+}
 
 @Override
 public int getItemCount() {
