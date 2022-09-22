@@ -24,7 +24,7 @@ public class CategoryDaoImplement extends DatabaseHelper implements CategoryDao 
         Cursor cursor = db.query("categories", null, "id = ?", new String[] { String.valueOf(id) },null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
-        Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+        Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
         return category;
 
     }
@@ -39,7 +39,7 @@ public class CategoryDaoImplement extends DatabaseHelper implements CategoryDao 
         cursor.moveToFirst();
 
         while(cursor.isAfterLast() == false) {
-            Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+            Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
             categoryList.add(category);
             cursor.moveToNext();
         }
@@ -50,7 +50,10 @@ public class CategoryDaoImplement extends DatabaseHelper implements CategoryDao 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        // ben database phải có cột image, name, description nha
         values.put("name", category.name);
+        values.put("description", category.description);
+        values.put("image", category.image);
 
         db.insert("categories", null, values);
         db.close();
@@ -82,7 +85,7 @@ public class CategoryDaoImplement extends DatabaseHelper implements CategoryDao 
         cursor.moveToFirst();
 
         while(cursor.isAfterLast() == false) {
-            Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+            Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
             categoryList.add(category);
             cursor.moveToNext();
         }
