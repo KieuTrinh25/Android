@@ -1,22 +1,22 @@
 package com.example.nongsan.ui.constract;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.nongsan.data.DatabaseDao;
 import com.example.nongsan.data.DatabaseSQlite;
 import com.example.nongsan.data.model.Category;
+import com.example.nongsan.data.model.Product;
 
 import java.util.List;
 
-public class HomePresenter implements  HomeConstract.IPresenter{
-    private HomeConstract.IView mView;
+public class HomeFragmentPresenter implements  HomeFragmentConstract.IPresenter{
+    private HomeFragmentConstract.IView mView;
 
-    public HomePresenter(Context context){
+    public HomeFragmentPresenter(Context context){
         DatabaseDao.init((new DatabaseSQlite(context)));
     }
     @Override
-    public void setView(HomeConstract.IView view) {
+    public void setView(HomeFragmentConstract.IView view) {
         mView = view;
     }
 
@@ -28,8 +28,20 @@ public class HomePresenter implements  HomeConstract.IPresenter{
     }
 
     @Override
+    public void getProductList() {
+        List<Product> productList = DatabaseDao.getInstance().getProductDao().all();
+
+        mView.setProductListToView(productList);
+    }
+
+    @Override
     public void getCategory(int categoryId) {
         Category category = DatabaseDao.getInstance().getCategoryDao().find(categoryId);
         mView.showCategory(category);
+    }
+
+    @Override
+    public void insertCategory(Category category) {
+        DatabaseDao.getInstance().getCategoryDao().insert(category);
     }
 }

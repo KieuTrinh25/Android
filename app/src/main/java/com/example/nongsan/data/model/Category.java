@@ -4,16 +4,19 @@ public class Category {
     public int id;
     public String name;
     public String description;
+    public int image;
 
-    public Category(int id, String name, String description) {
+    public Category(int id, String name, String description, int image) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.image = image;
     }
 
-    public Category(String name, String description) {
+    public Category(String name, String description, int image) {
         this.name = name;
         this.description = description;
+        this.image = image;
     }
 
     public int getId() {
