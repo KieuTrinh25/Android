@@ -10,7 +10,7 @@ public interface CategoryConstract {
     }
 
     interface IPresenter{
-        void setView(HomeFragmentConstract.IView view);
+        void setView(CategoryConstract.IView view);
         void getProductList(int categoryId);
     }
 }

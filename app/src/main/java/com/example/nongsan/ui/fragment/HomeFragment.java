@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nongsan.R;
-import com.example.nongsan.data.model.Category;
-import com.example.nongsan.data.model.Product;
+import com.example.nongsan.data.entity.Category;
+import com.example.nongsan.data.entity.Product;
 import com.example.nongsan.ui.adapter.CategoryAdapter;
 import com.example.nongsan.ui.constract.HomeFragmentConstract;
 import com.example.nongsan.ui.constract.HomeFragmentPresenter;
@@ -38,11 +38,6 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
     private void initGUI(View rootView){
         rc = rootView.findViewById(R.id.rc);
         rc.setLayoutManager(new LinearLayoutManager(getContext()));
-//
-//        rc = findViewById(R.id.rc1);
-//        rc.setLayoutManager(new LinearLayoutManager(this));
-
-
 
     }
 
@@ -50,13 +45,13 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
         mPresenter = new HomeFragmentPresenter(getContext());
         mPresenter.setView(this);
         mPresenter.getCategoryList();
-        //  mPresenter.getProductList();
+//        mPresenter.getProductList();
 
     }
 
     @Override
     public void setCategoryListToView(List<Category> categoryList) {
-        CategoryAdapter adapter = new CategoryAdapter(categoryList);
+        CategoryAdapter adapter = new CategoryAdapter(getContext(), categoryList);
         rc.setAdapter(adapter);
         rc.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
     }
@@ -73,8 +68,5 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
 //        rc.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 
-    @Override
-    public void showProduct(Product product) {
 
-    }
 }

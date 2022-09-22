@@ -73,6 +73,23 @@ public class ProductDaoImplement extends DatabaseHelper implements ProductDao {
     }
 
     @Override
+    public List<Product> getProductsByCategory(int categoryId) {
+        List<Product>  productList = new ArrayList<>();
+        String query = "SELECT * FROM products where categoryId=" + categoryId;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+
+        while(cursor.isAfterLast() == false) {
+            Product product = new Product(cursor.getInt(0), cursor.getString(1),  cursor.getInt(2),  cursor.getDouble(3), cursor.getInt(4), cursor.getInt(5));
+            productList.add(product);
+            cursor.moveToNext();
+        }
+        return productList;
+    }
+
+    @Override
     public List<Product> findByName(String name) {
         return null;
     }

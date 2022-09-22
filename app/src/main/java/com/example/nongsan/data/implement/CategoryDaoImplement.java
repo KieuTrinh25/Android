@@ -26,7 +26,6 @@ public class CategoryDaoImplement extends DatabaseHelper implements CategoryDao 
             cursor.moveToFirst();
         Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
         return category;
-
     }
 
     @Override

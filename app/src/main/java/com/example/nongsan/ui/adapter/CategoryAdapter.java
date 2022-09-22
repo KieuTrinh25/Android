@@ -11,10 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nongsan.ProductActivity;
+import com.example.nongsan.CategoryActivity;
 import com.example.nongsan.R;
-import com.example.nongsan.data.model.Category;
+import com.example.nongsan.data.entity.Category;
 import com.example.nongsan.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     private List<Category> categoryList;
     private Context context;
 
-public CategoryAdapter(List<Category> categoryList){
+public CategoryAdapter(Context context, List<Category> categoryList){
     this.context = context;
     this.categoryList = categoryList;
 }
@@ -41,16 +42,17 @@ public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     Category category = categoryList.get(position);
     holder.tvName.setText(category.name);
-    holder.imageView.setImageResource(category.image);
+    Picasso.get().load(category.image).into(holder.imageView);
+//    holder.imageView.setImageResource(category.image);
 
-//    holder.itemView.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            Intent intent = new Intent(context, ProductActivity.class);
-//            intent.putExtra(Constants.CATEGORY_NAME, category.name);
-//            context.startActivity(intent);
-//        }
-//    });
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context, CategoryActivity.class);
+            intent.putExtra(Constants.CATEGORY_ID, category.id);
+            context.startActivity(intent);
+        }
+    });
 }
 
 @Override
