@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.example.nongsan.data.DatabaseDao;
+import com.example.nongsan.data.entity.Category;
+import com.example.nongsan.data.remote.RetrofitContrller;
+import com.example.nongsan.data.remote.WebService;
 import com.example.nongsan.ui.fragment.FavouriteFragment;
 import com.example.nongsan.ui.fragment.HomeFragment;
 import com.example.nongsan.ui.fragment.NotificationFragment;
@@ -15,7 +20,15 @@ import com.example.nongsan.ui.fragment.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class MainActivity extends BaseActivity {
     BottomNavigationView bottomNavigationView;
     Fragment fragment = new HomeFragment();
 
@@ -23,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initGUI();
     }
 

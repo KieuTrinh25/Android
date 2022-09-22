@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         img.animate().setDuration(5000).alpha(0f).withEndAction(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
