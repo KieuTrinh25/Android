@@ -1,7 +1,7 @@
 package com.example.nongsan.data.remote;
 
-import com.example.nongsan.data.entity.Category;
-import com.example.nongsan.data.entity.Product;
+import com.example.nongsan.data.remote.entity.Category;
+import com.example.nongsan.data.remote.entity.Product;
 
 import java.util.List;
 
@@ -21,4 +21,15 @@ public interface WebService {
 
     @GET("products/show.php")
     Call<Product> product(@Query("id") int id);
+
+    @GET("products/hot.php")
+    Call<List<Product>> hotProducts();
+
+    /**
+     * localhost/api/products/filter.php?categoryId=1
+     * @param categoryId
+     * @return
+     */
+    @GET("products/filter.php")
+    Call<List<Product>> productListByCategory(@Query("categoryId") int categoryId);
 }

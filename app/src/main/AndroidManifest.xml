@@ -21,25 +21,16 @@
             android:name=".CartActivity"
             android:exported="false" />
         <activity
-            android:name=".Cart1Activity"
-            android:exported="false" />
-        <activity
-            android:name=".SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProductDetail1Activity"
+            android:name=".ProductDetailActivity"
             android:exported="false" />
         <activity
             android:name=".CategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductDetailActivity"
+            android:name=".SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

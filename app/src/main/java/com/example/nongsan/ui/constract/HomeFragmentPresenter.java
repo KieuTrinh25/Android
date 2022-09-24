@@ -2,10 +2,10 @@ package com.example.nongsan.ui.constract;
 
 import android.content.Context;
 
-import com.example.nongsan.data.DatabaseDao;
-import com.example.nongsan.data.DatabaseSQlite;
-import com.example.nongsan.data.entity.Category;
-import com.example.nongsan.data.entity.Product;
+import com.example.nongsan.data.dao.DatabaseDao;
+import com.example.nongsan.data.dao.DatabaseSQlite;
+import com.example.nongsan.data.remote.entity.Category;
+import com.example.nongsan.data.remote.entity.Product;
 import com.example.nongsan.data.remote.RetrofitContrller;
 import com.example.nongsan.data.remote.WebService;
 
@@ -43,32 +43,16 @@ public class HomeFragmentPresenter implements  HomeFragmentConstract.IPresenter{
     }
 
     @Override
-    public void getProductList() {
+    public void getHotProducts() {
         WebService service = RetrofitContrller.service();
-        service.productList().enqueue(new Callback<List<Product>>() {
+        service.hotProducts().enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                mView.setProductListToView(response.body());
+                mView.setHotProductsToView(response.body());
             }
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-
-            }
-        });
-    }
-
-    @Override
-    public void getCategory(int categoryId) {
-        WebService service = RetrofitContrller.service();
-        service.category(categoryId).enqueue(new Callback<Category>() {
-            @Override
-            public void onResponse(Call<Category> call, Response<Category> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<Category> call, Throwable t) {
 
             }
         });

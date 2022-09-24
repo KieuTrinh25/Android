@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nongsan.R;
-import com.example.nongsan.data.entity.Category;
-import com.example.nongsan.data.entity.Product;
+import com.example.nongsan.data.remote.entity.Category;
+import com.example.nongsan.data.remote.entity.Product;
 import com.example.nongsan.ui.adapter.CategoryAdapter;
+import com.example.nongsan.ui.adapter.ProductAdapter;
 import com.example.nongsan.ui.constract.HomeFragmentConstract;
 import com.example.nongsan.ui.constract.HomeFragmentPresenter;
 
@@ -23,6 +24,7 @@ import java.util.List;
 public class HomeFragment extends Fragment implements HomeFragmentConstract.IView {
     private HomeFragmentConstract.IPresenter mPresenter;
     private RecyclerView rc;
+    private RecyclerView rcHotProducts;
 
     @Nullable
     @Override
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
     private void initGUI(View rootView){
         rc = rootView.findViewById(R.id.rc);
         rc.setLayoutManager(new LinearLayoutManager(getContext()));
+        rcHotProducts = rootView.findViewById(R.id.rc_hot_products);
 
     }
 
@@ -45,8 +48,7 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
         mPresenter = new HomeFragmentPresenter(getContext());
         mPresenter.setView(this);
         mPresenter.getCategoryList();
-//        mPresenter.getProductList();
-
+        mPresenter.getHotProducts();
     }
 
     @Override
@@ -62,11 +64,10 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
     }
 
     @Override
-    public void setProductListToView(List<Product> productList) {
-//        ProductAdapter adapter = new ProductAdapter(productList);
-//        rc.setAdapter(adapter);
-//        rc.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+    public void setHotProductsToView(List<Product> productList) {
+        ProductAdapter adapter = new ProductAdapter(getContext(), productList);
+        rcHotProducts.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rcHotProducts.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
-
-
 }

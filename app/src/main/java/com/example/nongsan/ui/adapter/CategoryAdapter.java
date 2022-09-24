@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nongsan.CategoryActivity;
 import com.example.nongsan.R;
-import com.example.nongsan.data.entity.Category;
+import com.example.nongsan.data.remote.entity.Category;
 import com.example.nongsan.utils.Constants;
 import com.squareup.picasso.Picasso;
 
@@ -43,7 +43,6 @@ public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     Category category = categoryList.get(position);
     holder.tvName.setText(category.name);
     Picasso.get().load(category.image).into(holder.imageView);
-//    holder.imageView.setImageResource(category.image);
 
     holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override

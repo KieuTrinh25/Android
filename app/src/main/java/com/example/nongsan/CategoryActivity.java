@@ -1,51 +1,64 @@
 package com.example.nongsan;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.nongsan.data.model.Category;
-import com.example.nongsan.data.model.Product;
+import com.example.nongsan.data.remote.entity.Category;
+import com.example.nongsan.data.remote.entity.Product;
 import com.example.nongsan.ui.adapter.ProductAdapter;
 import com.example.nongsan.ui.constract.CategoryConstract;
 import com.example.nongsan.ui.constract.CategoryPresenter;
-import com.example.nongsan.ui.fragment.HomeFragment;
 import com.example.nongsan.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class CategoryActivity extends BaseActivity implements CategoryConstract.IView{
-    CategoryConstract.IPresenter mPresenter;
-    private RecyclerView rc;
+    private CategoryConstract.IPresenter mPresenter;
+    private RecyclerView rcCategory;
+
+    private ImageView ivCategoryImage;
+    private TextView tvCategoryName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-
+        
         initGUI();
         initData();
     }
 
     private void initGUI(){
-        rc = findViewById(R.id.rc);
-        rc.setLayoutManager(new LinearLayoutManager(this));
+        ivCategoryImage = findViewById(R.id.iv_category_image);
+        tvCategoryName = findViewById(R.id.tv_category_name);
+        rcCategory = findViewById(R.id.rc_category);
     }
 
-    private void initData(){
+    private void initData() {
+        int categoryId = getIntent().getIntExtra(Constants.CATEGORY_ID, 1);
+
         mPresenter = new CategoryPresenter();
         mPresenter.setView(this);
-
-        int categoryId = getIntent().getIntExtra(Constants.CATEGORY_ID, 1);
-        mPresenter.getProductList(categoryId);
+        mPresenter.getProductListByCategory(categoryId);
+        mPresenter.getCategory(categoryId);
     }
 
     @Override
     public void setProductListToView(List<Product> productList) {
-        ProductAdapter adapter = new ProductAdapter(productList);
-        rc.setAdapter(adapter);
-        rc.setLayoutManager(new LinearLayoutManager(this));
+        ProductAdapter adapter = new ProductAdapter(this, productList);
+        rcCategory.setLayoutManager(new LinearLayoutManager(this));
+        rcCategory.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setCategoryToView(Category category) {
+        Picasso.get().load(category.image).into(ivCategoryImage);
+        tvCategoryName.setText(category.name);
     }
 }
