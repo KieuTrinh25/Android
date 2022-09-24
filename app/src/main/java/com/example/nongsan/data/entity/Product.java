@@ -2,7 +2,7 @@ package com.example.nongsan.data.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Product {
+public class    Product {
     @SerializedName("id")
     public int id;
 
