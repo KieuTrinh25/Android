@@ -1,8 +1,8 @@
-package com.example.nongsan.data.entity;
+package com.example.nongsan.data.remote.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-public class    Product {
+public class Product {
     @SerializedName("id")
     public int id;
 
@@ -15,9 +15,10 @@ public class    Product {
     @SerializedName("price")
     public double price;
 
-    @SerializedName("name")
-    public int image;
+    @SerializedName("image")
+    public String image;
 
     @SerializedName("categories_id")
     public int categoryId;
+
 }

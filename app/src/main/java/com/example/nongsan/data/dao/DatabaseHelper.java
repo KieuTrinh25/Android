@@ -1,4 +1,4 @@
-package com.example.nongsan.data;
+package com.example.nongsan.data.dao;
 
 import android.content.Context;
 import android.database.SQLException;

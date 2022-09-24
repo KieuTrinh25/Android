@@ -1,4 +1,4 @@
-package com.example.nongsan.data.entity;
+package com.example.nongsan.data.remote.entity;
 
 import com.google.gson.annotations.SerializedName;
 

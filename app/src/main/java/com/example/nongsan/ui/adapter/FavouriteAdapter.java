@@ -13,25 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nongsan.ProductDetailActivity;
 import com.example.nongsan.R;
-import com.example.nongsan.data.remote.entity.Product;
+import com.example.nongsan.data.dao.model.Favourite;
 import com.example.nongsan.utils.Constants;
 import com.example.nongsan.utils.StringHelper;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-    private List<Product> productList;
+public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.ViewHolder> {
+    private List<Favourite> productList;
     private Context mContext;
 
-    public ProductAdapter(Context context, List<Product> productList){
+    public FavouriteAdapter(Context context, List<Favourite> productList){
         mContext = context;
         this.productList = productList;
     }
 
     @NonNull
     @Override
-    public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavouriteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_product, parent, false);
 
@@ -42,9 +42,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product product = productList.get(position);
-        Picasso.get().load(product.image).into(holder.imgProduct);
-        holder.tvProductName.setText(product.name);
+        Favourite product = productList.get(position);
+        Picasso.get().load(product.image).into(holder.imgFavourite);
+        holder.tvFavouriteName.setText(product.name);
         holder.tvPrice.setText(StringHelper.currencyFormat(product.price));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -63,14 +63,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public ImageView imgProduct;
-        private TextView tvProductName;
+        public ImageView imgFavourite;
+        private TextView tvFavouriteName;
         private TextView tvPrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgProduct = itemView.findViewById(R.id.imgProduct);
-            tvProductName = itemView.findViewById(R.id.tv_product_name);
+            imgFavourite = itemView.findViewById(R.id.imgProduct);
+            tvFavouriteName = itemView.findViewById(R.id.tv_product_name);
             tvPrice = itemView.findViewById(R.id.tv_price);
         }
     }

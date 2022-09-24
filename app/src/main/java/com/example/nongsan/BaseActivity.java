@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.nongsan.data.DatabaseDao;
-import com.example.nongsan.data.DatabaseSQlite;
+import com.example.nongsan.data.dao.DatabaseDao;
+import com.example.nongsan.data.dao.DatabaseSQlite;
 
 public class BaseActivity extends AppCompatActivity {
     @Override
