@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductDetail1Activity"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="170dp"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_name_sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name sản phẩm mùa hè thnah nhiệt giải độc"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            />
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_baseline_star_25"></ImageView>
+            <TextView
+                android:layout_marginLeft="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="4.8 (+999 Bình luận)"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="|"
+                android:textSize="16dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="11dp"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_baseline_access_time_24"
+                />
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20 phút"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+                android:layout_marginLeft="70dp"
+
+                />
+        </LinearLayout>
+
+        <!--        dòng ngang màu xám-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:paddingTop="10dp"
+            android:background="@color/gray"
+            android:layout_marginBottom="12dp"
+            >
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phổ biến"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:layout_marginLeft="10dp"
+            />
+
+        <!--        món phổ biến-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv.name"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+
+                    android:padding="10dp"
+                    android:text="Cá ngừ đại dương 150kg"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:text="100,000đ"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/red"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_baseline_add_box_24"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <!--        dòng ngang màu xám-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:paddingTop="10dp"
+            android:background="@color/gray"
+            android:layout_marginBottom="12dp"
+            >
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đặt hàng"
+            android:background="@color/colorPrimary"
+            />
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>
