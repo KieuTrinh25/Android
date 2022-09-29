@@ -1,5 +1,6 @@
 package com.example.nongsan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -11,6 +12,7 @@ import com.example.nongsan.data.dao.model.Favourite;
 import com.example.nongsan.data.remote.entity.Product;
 import com.example.nongsan.ui.constract.ProductDetailConstract;
 import com.example.nongsan.ui.constract.ProductDetailPresenter;
+import com.example.nongsan.utils.Auth;
 import com.example.nongsan.utils.Constants;
 import com.example.nongsan.utils.StringHelper;
 import com.squareup.picasso.Picasso;
@@ -26,6 +28,7 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
     private ImageButton ibBtnFavourite;
 
     private Product mProduct;
+    private TextView tvAddToCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +59,26 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
                 Favourite favourite = new Favourite(
                         mProduct.id,
                         mProduct.name,
-                        mProduct.quantity,
                         mProduct.price,
                         mProduct.image,
                         mProduct.categoryId
                 );
                 DatabaseDao.getInstance().getProductDao().insert(favourite);
+            }
+        });
+
+        tvAddToCart = findViewById(R.id.tv_add_to_cart);
+        tvAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isLogged = Auth.getInstance(ProductDetailActivity.this).getAuthentication();
+                if(!isLogged){
+                    Intent intent = new Intent(ProductDetailActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }else{
+                    //Order
+                    mPresenter.order(mProduct, 1);
+                }
             }
         });
     }

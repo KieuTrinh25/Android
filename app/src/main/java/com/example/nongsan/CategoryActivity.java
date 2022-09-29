@@ -4,6 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +26,8 @@ public class CategoryActivity extends BaseActivity implements CategoryConstract.
     private ImageView ivCategoryImage;
     private TextView tvCategoryName;
 
+    private ImageButton ibBtnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,14 @@ public class CategoryActivity extends BaseActivity implements CategoryConstract.
         ivCategoryImage = findViewById(R.id.iv_category_image);
         tvCategoryName = findViewById(R.id.tv_category_name);
         rcCategory = findViewById(R.id.rc_category);
+
+        ibBtnBack = findViewById(R.id.ib_btn_back);
+        ibBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void initData() {
