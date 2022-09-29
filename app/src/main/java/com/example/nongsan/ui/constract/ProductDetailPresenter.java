@@ -1,5 +1,8 @@
 package com.example.nongsan.ui.constract;
 
+import com.example.nongsan.data.dao.DatabaseDao;
+import com.example.nongsan.data.dao.OrderDetailDao;
+import com.example.nongsan.data.dao.model.OrderDetail;
 import com.example.nongsan.data.remote.entity.Product;
 import com.example.nongsan.data.remote.RetrofitContrller;
 
@@ -28,5 +31,18 @@ public class ProductDetailPresenter implements ProductDetailConstract.IPresenter
 
             }
         });
+    }
+
+    @Override
+    public void order(Product product, int quantity) {
+        OrderDetailDao orderDetailDao = DatabaseDao.getInstance().getOrderDetailDao();
+        orderDetailDao.insert(new OrderDetail(
+                product.id,
+                product.name,
+                product.quantity,
+                product.price,
+                product.image,
+                product.categoryId
+        ));
     }
 }

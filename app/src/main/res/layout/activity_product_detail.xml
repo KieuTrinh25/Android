@@ -16,6 +16,7 @@
                 android:id="@+id/img.detail"
                 android:layout_width="match_parent"
                 android:layout_height="300dp" />
+
             <ImageButton
                 android:id="@+id/ib.btn.back"
                 android:layout_width="45dp"
@@ -165,12 +166,14 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/addcart">
             <TextView
+                android:id="@+id/tv.add.to.cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Thêm vào giỏ hàng"
                 android:padding="10dp"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                android:clickable="true"
                 android:textColor="@color/white"
                 android:gravity="center_vertical|center_horizontal"/>
 

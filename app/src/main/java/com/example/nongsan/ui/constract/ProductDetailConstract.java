@@ -10,5 +10,6 @@ public interface ProductDetailConstract {
     interface IPresenter{
         void setView(ProductDetailConstract.IView view);
         void getProduct(int productId);
+        void order(Product product, int quantity);
     }
 }
