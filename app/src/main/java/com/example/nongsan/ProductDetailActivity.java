@@ -23,6 +23,7 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
     private ImageView imgProduct;
     private TextView tvName;
     private TextView tvPrice;
+    private TextView edQuantity;
 
     private ImageButton ibBtnBack;
     private ImageButton ibBtnFavourite;
@@ -43,6 +44,7 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
         imgProduct = findViewById(R.id.img_detail);
         tvName = findViewById(R.id.tv_product_name);
         tvPrice = findViewById(R.id.tv_product_price);
+        edQuantity = findViewById(R.id.ed_quantity);
 
         ibBtnBack = findViewById(R.id.ib_btn_back);
         ibBtnBack.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +79,8 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
                     startActivity(intent);
                 }else{
                     //Order
-                    mPresenter.order(mProduct, 1);
+                    int quantity = Integer.parseInt(edQuantity.getText().toString());
+                    mPresenter.order(mProduct, quantity);
                 }
             }
         });
