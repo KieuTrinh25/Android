@@ -1,5 +1,6 @@
 package com.example.nongsan;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -63,7 +64,7 @@ public class CategoryActivity extends BaseActivity implements CategoryConstract.
     @Override
     public void setProductListToView(List<Product> productList) {
         ProductAdapter adapter = new ProductAdapter(this, productList);
-        rcCategory.setLayoutManager(new LinearLayoutManager(this));
+        rcCategory.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
         rcCategory.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
