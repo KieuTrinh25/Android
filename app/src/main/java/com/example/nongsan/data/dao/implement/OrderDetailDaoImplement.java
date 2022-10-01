@@ -24,7 +24,7 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
         Cursor cursor = db.query("orders_details", null, "id = ?", new String[] { String.valueOf(id) },null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
-        OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getDouble(3), cursor.getString(4), cursor.getInt(5));
+        OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1),cursor.getDouble(2), cursor.getInt(3),  cursor.getString(4), cursor.getInt(5));
         return product;
     }
 
@@ -38,7 +38,7 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
         cursor.moveToFirst();
 
         while(cursor.isAfterLast() == false) {
-            OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getDouble(3), cursor.getString(4), cursor.getInt(5));
+            OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1),cursor.getDouble(2), cursor.getInt(3),  cursor.getString(4), cursor.getInt(5));
             productList.add(product);
             cursor.moveToNext();
         }

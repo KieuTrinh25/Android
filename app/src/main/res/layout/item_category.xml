@@ -19,8 +19,7 @@
                 android:id="@+id/imgView"
                 android:layout_width="100dp"
                 android:layout_height="90dp"
-                android:layout_margin="10dp"/>
-
+                android:layout_margin="5dp"/>
             <TextView
                 android:id="@+id/tv.name"
                 android:layout_width="match_parent"

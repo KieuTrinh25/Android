@@ -12,5 +12,5 @@
         android:icon="@drawable/ic_baseline_favorite_border_24"/>
     <item android:id="@+id/user"
         android:title="User"
-        android:icon="@drawable/ic_baseline_settings_24"/>
+        android:icon="@drawable/ic_baseline_perm_identity_24"/>
 </menu>
