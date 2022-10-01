@@ -40,14 +40,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             app:srcCompat="@drawable/ic_baseline_close_24"
-
             />
     </LinearLayout>
     <!--        dòng ngang màu xám-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:paddingTop="1dp"
         android:background="@color/gray"
         android:layout_marginBottom="5dp"
@@ -68,4 +66,9 @@
         android:background="@drawable/addcart"
         android:text="Thanh Toán"
         android:textColor="@color/white"></Button>
+
+
+
+
+
 </LinearLayout>

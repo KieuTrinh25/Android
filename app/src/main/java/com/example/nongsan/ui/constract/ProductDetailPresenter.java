@@ -36,6 +36,7 @@ public class ProductDetailPresenter implements ProductDetailConstract.IPresenter
     @Override
     public void order(Product product, int quantity) {
         OrderDetailDao orderDetailDao = DatabaseDao.getInstance().getOrderDetailDao();
+<<<<<<< HEAD
         orderDetailDao.insert(new OrderDetail(
                 product.id,
                 product.name,
@@ -44,5 +45,22 @@ public class ProductDetailPresenter implements ProductDetailConstract.IPresenter
                 product.image,
                 product.categoryId
         ));
+=======
+        OrderDetail orderDetail = orderDetailDao.findByProductId(product.id);
+        if(orderDetail == null){
+            orderDetailDao.insert(new OrderDetail(
+                    product.id,
+                    product.name,
+                    quantity,
+                    product.price,
+                    product.image,
+                    product.categoryId
+            ));
+        }else{
+            orderDetail.quantity += quantity;
+            orderDetailDao.update(orderDetail);
+        }
+
+>>>>>>> e5b1c74 (order)
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface OrderDetailDao {
     OrderDetail find(int id);
+    OrderDetail findByProductId(int productId);
     List<OrderDetail> all();
     void insert(OrderDetail product);
     void update(OrderDetail product);

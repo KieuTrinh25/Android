@@ -1,6 +1,15 @@
 package com.example.nongsan.data.dao.model;
 
 public class Favourite {
+    public static final String SQL_CREATE_ENTRIES =
+            "CREATE TABLE favourites (" +
+                    "id INTEGER PRIMARY KEY," +
+                    "name TEXT," +
+                    "price NUMERIC," +
+                    "image TEXT,"+
+                    "categoryId INTEGER)";
+    public static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS favourites";
     public int id;
     public String name;
     public double price;
