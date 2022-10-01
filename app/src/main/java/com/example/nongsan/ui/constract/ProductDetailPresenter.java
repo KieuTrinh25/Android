@@ -39,8 +39,8 @@ public class ProductDetailPresenter implements ProductDetailConstract.IPresenter
         orderDetailDao.insert(new OrderDetail(
                 product.id,
                 product.name,
-                product.quantity,
                 product.price,
+                product.quantity,
                 product.image,
                 product.categoryId
         ));
