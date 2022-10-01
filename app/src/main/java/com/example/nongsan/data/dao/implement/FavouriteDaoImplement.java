@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FavouriteDaoImplement extends DatabaseHelper implements FavouriteDao {
+
     public FavouriteDaoImplement(Context context) {
         super(context);
     }

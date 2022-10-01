@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/drawable-v24/ic_baseline_notifications_none_24.xml" value="0.2015" />
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/drawable-v24/ic_baseline_settings_24.xml" value="0.121" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/drawable/addcart.xml" value="0.1645" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/drawable/bg_button.xml" value="0.1935" />
@@ -33,8 +34,9 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/activity_cart1.xml" value="0.14479166666666668" />
 =======
 >>>>>>> b9c05a3 (re layout)
+=======
+>>>>>>> e5b1c74 (order)
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/activity_category.xml" value="0.1" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/activity_check_out.xml" value="0.25" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/activity_home.xml" value="0.176" />
 <<<<<<< HEAD
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/activity_home1.xml" value="0.13333333333333333" />
@@ -53,13 +55,7 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/fragment_order.xml" value="0.234375" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/fragment_user.xml" value="0.234375" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/item_category.xml" value="0.22826086956521738" />
-<<<<<<< HEAD
-        <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/item_order_detail.xml" value="0.10989583333333333" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/item_product.xml" value="0.264" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/item_product_detail.xml" value="0.14479166666666668" />
-=======
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/layout/item_product.xml" value="0.2" />
->>>>>>> b9c05a3 (re layout)
         <entry key="..\:/Users/PC/AndroidStudioProjects/NongSan/app/src/main/res/menu/bottom_nav_menu.xml" value="0.234375" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/drawable-v24/ic_baseline_home_24.xml" value="0.1" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/drawable-v24/image_rounded.xml" value="0.1" />
@@ -89,9 +85,12 @@
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/activity_splash.xml" value="0.11979166666666667" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/fragment_favourite.xml" value="0.11979166666666667" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/fragment_notification.xml" value="0.1" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/fragment_order.xml" value="0.11979166666666667" />
+        <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/fragment_user.xml" value="0.1" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/item_cart.xml" value="0.14666666666666667" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/item_category.xml" value="0.11979166666666667" />
+        <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/item_order_detail.xml" value="0.1" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/item_product.xml" value="0.11979166666666667" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/layout/item_product_detail.xml" value="0.14666666666666667" />
         <entry key="..\:/WorkSpaceAndroid/Android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />

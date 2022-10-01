@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.nongsan.data.dao.model.Favourite;
+import com.example.nongsan.data.dao.model.OrderDetail;
 import com.example.nongsan.utils.Constants;
 
 import java.io.File;
@@ -22,62 +24,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context){
         super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
         this.context = context;
-        createDatabase();
-        openDatabase();
     }
-
-    @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(Favourite.SQL_CREATE_ENTRIES);
+        db.execSQL(OrderDetail.SQL_CREATE_ENTRIES);
     }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // This database is only a cache for online data, so its upgrade policy is
+        // to simply to discard the data and start over
+        db.execSQL(Favourite.SQL_DELETE_ENTRIES);
+        db.execSQL(OrderDetail.SQL_DELETE_ENTRIES);
+        onCreate(db);
     }
-
-    @Override
-    public synchronized void close() {
-        if (db != null)
-            db.close();
-        super.close();
-    }
-
-    public void createDatabase() {
-        boolean mDatabaseExist = checkDatabase();
-        if (!mDatabaseExist) {
-            this.getReadableDatabase();
-            this.close();
-            try {
-                copyDatabase();
-            } catch (IOException mIOException) {
-                throw new Error("Error!!!");
-            }
-        }
-    }
-
-    public boolean checkDatabase() {
-        File dbFile = new File(Constants.DATABASE_PATH + Constants.DATABASE_NAME);
-        return dbFile.exists();
-    }
-
-    public void copyDatabase() throws IOException {
-        InputStream mInput = context.getAssets().open(Constants.DATABASE_NAME);
-        String outFileName = Constants.DATABASE_PATH + Constants.DATABASE_NAME;
-        OutputStream mOutput = new FileOutputStream(outFileName);
-        byte[] mBuffer = new byte[1024];
-        int mLength;
-        while ((mLength = mInput.read(mBuffer)) > 0) {
-            mOutput.write(mBuffer, 0, mLength);
-        }
-        mOutput.flush();
-        mOutput.close();
-        mInput.close();
-    }
-
-    public boolean openDatabase() {
-        String mPath = Constants.DATABASE_PATH + Constants.DATABASE_NAME;
-        db = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
-        return db != null;
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        onUpgrade(db, oldVersion, newVersion);
     }
 }

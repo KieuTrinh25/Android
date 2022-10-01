@@ -29,6 +29,20 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
     }
 
     @Override
+    public OrderDetail findByProductId(int productId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query("orders_details", null, "product_id = ?", new String[] { String.valueOf(productId) },null, null, null);
+        if(cursor != null) {
+            if(cursor.moveToFirst()){
+                OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getDouble(3), cursor.getString(4), cursor.getInt(5));
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public List<OrderDetail> all() {
         List<OrderDetail>  productList = new ArrayList<>();
         String query = "SELECT * FROM orders_details";
@@ -55,7 +69,7 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
         values.put("price", product.price);
         values.put("quantity", product.quantity);
         values.put("image", product.image);
-        values.put("categoryId", product.categoryId);
+        values.put("product_id", product.productId);
 
 
         db.insert("orders_details", null, values);
@@ -64,11 +78,21 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
 
     @Override
     public void update(OrderDetail product) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", product.name);
+        values.put("quantity", product.quantity);
+        values.put("price", product.price);
+        values.put("image", product.image);
 
+        db.update("orders_details", values, "id = ?", new String[] { String.valueOf(product.id) });
+        db.close();
     }
 
     @Override
     public void delete(int id) {
-
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("orders_details", "id = ?", new String[] { String.valueOf(id) });
+        db.close();
     }
 }

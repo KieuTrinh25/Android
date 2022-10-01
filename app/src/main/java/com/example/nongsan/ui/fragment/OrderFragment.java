@@ -40,6 +40,7 @@ public class OrderFragment extends Fragment implements OrderFragmentConstract.IV
     private void initData(){
         mPresenter = new OrderFragmentPresenter();
         mPresenter.setView(this);
+        mPresenter.getOrderDetailList();
     }
 
     @Override

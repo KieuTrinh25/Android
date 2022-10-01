@@ -135,11 +135,7 @@
                     app:srcCompat="@drawable/ic_baseline_remove_24"
                     />
                 <TextView
-<<<<<<< HEAD
                     android:id="@+id/ed.quantity"
-=======
-                    android:id="@+id/quantity.detail"
->>>>>>> b9c05a3 (re layout)
                     android:layout_marginTop="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -147,8 +143,7 @@
                     android:layout_marginRight="15dp"
                     android:text="1"
                     android:textSize="22dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold"/>
                 <ImageButton
                     android:id="@+id/ib.btn.plus"
                     android:layout_width="40dp"

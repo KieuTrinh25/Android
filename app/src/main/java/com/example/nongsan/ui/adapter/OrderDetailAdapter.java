@@ -46,7 +46,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         Picasso.get().load(product.image).into(holder.imgOrderDetail);
         holder.tvOrderDetailName.setText(product.name);
         holder.tvPrice.setText(StringHelper.currencyFormat(product.price));
-        holder.tvQuantity.setText(product.quantity + "");
+        holder.tvQuantity.setText(String.valueOf(product.quantity));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
