@@ -3,6 +3,7 @@ package com.example.nongsan;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,9 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
     private ImageButton ibBtnBack;
     private ImageButton ibBtnFavourite;
 
+    private ImageButton ibBtnMinus;
+    private ImageButton ibBtnPlus;
+
     private Product mProduct;
     private TextView tvAddToCart;
 
@@ -47,12 +51,7 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
         edQuantity = findViewById(R.id.ed_quantity);
 
         ibBtnBack = findViewById(R.id.ib_btn_back);
-        ibBtnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        ibBtnBack.setOnClickListener(view -> onBackPressed());
 
         ibBtnFavourite = findViewById(R.id.ib_btn_favourite);
         ibBtnFavourite.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +83,11 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
                 }
             }
         });
+        ibBtnMinus = findViewById(R.id.ib_btn_minus);
+        ibBtnPlus = findViewById(R.id.ib_btn_plus);
+
+        ibBtnMinus.setOnClickListener(handleClick);
+        ibBtnPlus.setOnClickListener(handleClick);
     }
 
     private void initData() {
@@ -101,4 +105,17 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
         tvName.setText(product.name);
         tvPrice.setText(StringHelper.currencyFormat(product.price));
     }
+
+    private View.OnClickListener handleClick = view -> {
+        int quantity = Integer.parseInt(edQuantity.getText().toString());
+        switch (view.getId()){
+            case R.id.ib_btn_minus:
+                if(quantity > 1) quantity--;
+                break;
+            case R.id.ib_btn_plus:
+                quantity++;
+                break;
+        }
+        edQuantity.setText(String.valueOf(quantity));
+    };
 }

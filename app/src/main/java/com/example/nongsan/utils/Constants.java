@@ -7,5 +7,5 @@ public class Constants {
 
     public static final String CATEGORY_ID = "category_id";
     public static final String PRODUCT_ID = "product_id";
-    public static final String BASE_URL = "http://192.168.43.218:81/api/";
+    public static final String BASE_URL = "http://192.168.201.66/api/";
 }
