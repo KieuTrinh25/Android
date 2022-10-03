@@ -40,22 +40,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
 
     implementation 'com.squareup.picasso:picasso:2.8'
-<<<<<<< HEAD
 
-//    //button
-//    implementation 'com.cuboid:cuboidcirclebutton:1.0.3'
-<<<<<<< HEAD
-//    implementation 'com.synnapps:carouselview:0.1.4'
-=======
-<<<<<<< HEAD
-
-//    implementation 'com.github.jama5262:CarouselView:1.2.2'
-=======
 //    img circle
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
->>>>>>> b9c05a3 (re layout)
->>>>>>> 6b7e536 (re layout)
-=======
-    implementation 'com.mikhaellopez:circularimageview:4.3.0'
->>>>>>> e5b1c74 (order)
+    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
+
 }

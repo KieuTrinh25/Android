@@ -43,7 +43,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product product = productList.get(position);
-        Picasso.get().load(product.image).into(holder.imgProduct);
+        Picasso.get().load(product.image).fit().into(holder.imgProduct);
         holder.tvProductName.setText(product.name);
         holder.tvPrice.setText(StringHelper.currencyFormat(product.price));
 

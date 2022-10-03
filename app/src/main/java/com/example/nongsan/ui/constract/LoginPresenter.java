@@ -35,7 +35,6 @@ public class LoginPresenter implements LoginConstract.IPresenter{
                     mView.loginFailed();
                 }
             }
-
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Log.e("login failed", t.toString());

@@ -42,7 +42,7 @@ public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     Category category = categoryList.get(position);
     holder.tvName.setText(category.name);
-    Picasso.get().load(category.image).into(holder.imageView);
+    Picasso.get().load(category.image).fit().into(holder.imageView);
 
     holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override

@@ -17,16 +17,11 @@ public class OrderDetail {
     public int quantity;
     public String image;
     public int productId;
-
-<<<<<<< HEAD
-    public OrderDetail(int id, String name, double price, int quantity, String image, int categoryId) {
-=======
     public OrderDetail(int id, String name, int quantity, double price, String image, int productId) {
->>>>>>> e5b1c74 (order)
         this.id = id;
         this.name = name;
-        this.price = price;
         this.quantity = quantity;
+        this.price = price;
         this.image = image;
         this.productId = productId;
     }

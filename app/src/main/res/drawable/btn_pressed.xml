@@ -3,8 +3,8 @@
     <solid android:color="#FFFFFF"/>
     //specify gradient
     <gradient
-        android:startColor="#dd9c36"
-        android:endColor="#dd9c36"
+        android:startColor="#e6be7f"
+        android:endColor="#e6be7f"
         android:angle="90"/>
 
     <padding

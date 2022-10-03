@@ -24,7 +24,7 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
         Cursor cursor = db.query("orders_details", null, "id = ?", new String[] { String.valueOf(id) },null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
-        OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1),cursor.getDouble(2), cursor.getInt(3),  cursor.getString(4), cursor.getInt(5));
+        OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1),cursor.getInt(2),cursor.getDouble(3),  cursor.getString(4), cursor.getInt(5));
         return product;
     }
 
@@ -35,7 +35,7 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
         Cursor cursor = db.query("orders_details", null, "product_id = ?", new String[] { String.valueOf(productId) },null, null, null);
         if(cursor != null) {
             if(cursor.moveToFirst()){
-                OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getDouble(3), cursor.getString(4), cursor.getInt(5));
+                OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1),cursor.getInt(2),cursor.getDouble(3),  cursor.getString(4), cursor.getInt(5));
                 return product;
             }
         }
@@ -52,7 +52,7 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
         cursor.moveToFirst();
 
         while(cursor.isAfterLast() == false) {
-            OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1),cursor.getDouble(2), cursor.getInt(3),  cursor.getString(4), cursor.getInt(5));
+            OrderDetail product = new OrderDetail(cursor.getInt(0), cursor.getString(1),cursor.getInt(2),cursor.getDouble(3),  cursor.getString(4), cursor.getInt(5));
             productList.add(product);
             cursor.moveToNext();
         }
@@ -93,6 +93,13 @@ public class OrderDetailDaoImplement extends DatabaseHelper implements OrderDeta
     public void delete(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("orders_details", "id = ?", new String[] { String.valueOf(id) });
+        db.close();
+    }
+
+    @Override
+    public void deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("orders_details", "id > ?", new String[] { String.valueOf(0) });
         db.close();
     }
 }

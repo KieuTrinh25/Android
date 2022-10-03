@@ -11,4 +11,5 @@ public interface OrderDetailDao {
     void insert(OrderDetail product);
     void update(OrderDetail product);
     void delete(int id);
+    void deleteAll();
 }

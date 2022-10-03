@@ -33,7 +33,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
     @Override
     public FavouriteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_product, parent, false);
+                .inflate(R.layout.item_favouries, parent, false);
 
         return new ViewHolder(view);
     }
@@ -69,9 +69,9 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgFavourite = itemView.findViewById(R.id.imgProduct);
-            tvFavouriteName = itemView.findViewById(R.id.tv_product_name);
-            tvPrice = itemView.findViewById(R.id.tv_price);
+            imgFavourite = itemView.findViewById(R.id.img_favouries);
+            tvFavouriteName = itemView.findViewById(R.id.tv_product_name_favouries);
+            tvPrice = itemView.findViewById(R.id.tv_price_favouries);
         }
     }
 }

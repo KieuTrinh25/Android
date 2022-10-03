@@ -26,7 +26,7 @@ public class FavouriteDaoImplement extends DatabaseHelper implements FavouriteDa
         Cursor cursor = db.query("favourites", null, "id = ?", new String[] { String.valueOf(id) },null, null, null);
         if(cursor != null)
             cursor.moveToFirst();
-        Favourite product = new Favourite(cursor.getInt(0), cursor.getString(1), cursor.getDouble(3), cursor.getString(4), cursor.getInt(5));
+        Favourite product = new Favourite(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getString(3), cursor.getInt(4));
         return null;
     }
 
@@ -40,7 +40,7 @@ public class FavouriteDaoImplement extends DatabaseHelper implements FavouriteDa
         cursor.moveToFirst();
 
         while(cursor.isAfterLast() == false) {
-            Favourite product = new Favourite(cursor.getInt(0), cursor.getString(1), cursor.getDouble(3), cursor.getString(4), cursor.getInt(5));
+            Favourite product = new Favourite(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getString(3), cursor.getInt(4));
             productList.add(product);
             cursor.moveToNext();
         }
@@ -56,7 +56,7 @@ public class FavouriteDaoImplement extends DatabaseHelper implements FavouriteDa
         values.put("name", product.name);
         values.put("price", product.price);
         values.put("image", product.image);
-        values.put("categoryId", product.categoryId);
+        values.put("product_id", product.product_id);
 
 
         db.insert("favourites", null, values);

@@ -1,10 +1,12 @@
 package com.example.nongsan.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ import com.example.nongsan.ui.adapter.CategoryAdapter;
 import com.example.nongsan.ui.adapter.ProductAdapter;
 import com.example.nongsan.ui.constract.HomeFragmentConstract;
 import com.example.nongsan.ui.constract.HomeFragmentPresenter;
+import com.example.nongsan.ui.custom.SearchDialog;
 
 import java.util.List;
 
@@ -31,6 +34,7 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
     private RecyclerView rc;
     private RecyclerView rcHotProducts;
     private ViewFlipper v_flipper;
+    private SearchView svSearch;
 
     @Nullable
     @Override
@@ -47,8 +51,22 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
         rc.setLayoutManager(new LinearLayoutManager(getContext()));
         rcHotProducts = rootView.findViewById(R.id.rc_hot_products);
 
-        int images [] = {R.drawable.banner_list12, R.drawable.banner1, R.drawable.banner2};
+        int images [] = {R.drawable.sale, R.drawable.sale1, R.drawable.sale2};
         v_flipper = rootView.findViewById(R.id.v_flipper);
+        svSearch = rootView.findViewById(R.id.sv_search);
+        svSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                String key = svSearch.getQuery().toString();
+                mPresenter.search(key);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
 
         for (int image: images){
             flipperImages(image);
@@ -96,6 +114,9 @@ public class HomeFragment extends Fragment implements HomeFragmentConstract.IVie
         adapter.notifyDataSetChanged();
     }
 
-
-
+    @Override
+    public void setProductListSearchToView(List<Product> productList) {
+        SearchDialog searchDialog = new SearchDialog(getContext(), productList);
+        searchDialog.show();
+    }
 }

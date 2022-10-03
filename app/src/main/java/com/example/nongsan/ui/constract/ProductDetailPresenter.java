@@ -6,6 +6,8 @@ import com.example.nongsan.data.dao.model.OrderDetail;
 import com.example.nongsan.data.remote.entity.Product;
 import com.example.nongsan.data.remote.RetrofitContrller;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,31 +38,21 @@ public class ProductDetailPresenter implements ProductDetailConstract.IPresenter
     @Override
     public void order(Product product, int quantity) {
         OrderDetailDao orderDetailDao = DatabaseDao.getInstance().getOrderDetailDao();
-<<<<<<< HEAD
-        orderDetailDao.insert(new OrderDetail(
-                product.id,
-                product.name,
-                product.price,
-                product.quantity,
-                product.image,
-                product.categoryId
-        ));
-=======
+        List<OrderDetail> orderDetailList = orderDetailDao.all();
         OrderDetail orderDetail = orderDetailDao.findByProductId(product.id);
         if(orderDetail == null){
             orderDetailDao.insert(new OrderDetail(
-                    product.id,
+                    0,
                     product.name,
                     quantity,
                     product.price,
                     product.image,
-                    product.categoryId
+                    product.id
             ));
         }else{
             orderDetail.quantity += quantity;
             orderDetailDao.update(orderDetail);
         }
-
->>>>>>> e5b1c74 (order)
+        mView.setOrderSuccess();
     }
 }

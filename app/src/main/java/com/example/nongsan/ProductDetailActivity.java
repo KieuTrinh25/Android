@@ -2,6 +2,7 @@ package com.example.nongsan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,6 +18,8 @@ import com.example.nongsan.utils.Auth;
 import com.example.nongsan.utils.Constants;
 import com.example.nongsan.utils.StringHelper;
 import com.squareup.picasso.Picasso;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ProductDetailActivity extends BaseActivity implements ProductDetailConstract.IView {
     private ProductDetailConstract.IPresenter mPresenter;
@@ -106,6 +109,13 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
         tvPrice.setText(StringHelper.currencyFormat(product.price));
     }
 
+    @Override
+    public void setOrderSuccess() {
+        new SweetAlertDialog(this)
+                .setTitleText("Order Success!")
+                .show();
+    }
+
     private View.OnClickListener handleClick = view -> {
         int quantity = Integer.parseInt(edQuantity.getText().toString());
         switch (view.getId()){
@@ -118,4 +128,16 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
         }
         edQuantity.setText(String.valueOf(quantity));
     };
+//    private void noTiFiCaTion() {
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                showDialog("Thêm vào giỏ hàng thành công !");
+//            }
+//        },1000);
+//    }
+//
+//    private void showDialog(String s) {
+//
+//    }
 }
